@@ -9,3 +9,25 @@ Docker is a containerization technology used to package and run applications any
 Docker makes our applications portable, faster, and easier to deploy into cloud-based environments. It also allows us to re-use functionality at an application level. For example, you can tell Docker to start a MySQL database with a single command - all without even having MySQL installed! More on this later. For a hackathon, Docker can drastically cut down infrastructure set up times since there are millions of preconfigured Docker images to chose from. 
 
 # Installing Docker
+Follow the installation instructions for your particular OS: https://docs.docker.com/v17.12/docker-for-mac/install/
+
+NOTE: If you are running Windows 10 Home, you cannot use Docker for Windows. You must use the Docker Toolbox. Docker Toolbox installation can be found [here](https://docs.docker.com/v17.12/toolbox/toolbox_install_windows/). Windows 10 Pro, Enterprise, and Student users should not have a problem using the Docker for Windows installation.
+
+# Testing Docker Installation
+To test your Docker installation, you can run `docker run hello-world`. You should see a message generated as a result of Docker downloading the hello-world image. It should explain the steps Docker followed to get the hello-world application up and running. If you are a Linux user and you need `sudo` in order to run Docker commands, you may have missed a step. Try running `sudo usermod -aG docker $USER` and then logging out and back in. If that did not work, try restarting your computer/VM and trying again. 
+
+# Docker Hub
+The Docker Hub is a repository where you can find millions of docker images. Images like Fedora, MongoDB, Ubuntu, Redis, PostgreSQL, MySQL, RabbitMQ, and many more! By default, Docker is configured to search for docker images here. When we executed `docker run hello-world`, Docker first looked for an image named hello-world locally. When it couldn't find it, it reached out to the Docker Hub and downloaded it. How convenient!
+
+We can get a little more involved with our Docker-ing: Try running `docker run -it ubuntu`. Notice anything? It started a container running Ubuntu and sent you the bash shell! Ctrl + D will exit and terminate the container. 
+
+# A Few Basics Docker Commands
+1. `docker ps` will show you running containers (you probably don't have any)
+1. `docker images` will show you all images available locally (you probably have 2)
+1. `docker pull <image-name>` will download an image from the Docker Hub (or a configured repository) without trying to run it
+1. `docker run -it <image-name> <command>` will attempt to start a container with the given image name, in interactive mode. Use this for things like shells where you would like to mantain an open connection.
+1. `docker run -d <image-name>` will start the container in the background. The container will stay alive until it terminates itself or you specifically tell Docker to terminate it.
+
+# Dockerfiles
+We have started existing Docker images, but how do we make our own? The short answer: a Dockerfile. Dockerfiles are simple in concept, and don't necessarily have to be complicated (though many complicated applications have large Dockerfiles). An example Dockerfile can be seen HERE. Essentially, this file is a set of instructions Docker uses to package, setup, transfer files, and execute your application. There are a few main keywords to note:
+1. `
