@@ -26,7 +26,7 @@ class App extends React.Component {
       words: []
     }
 
-    this.fetchWords = () => fetch('http://localhost:8080/' + document.getElementById('generate_wordcloud_box').value)
+    this.fetchWords = () => fetch('http://172.17.0.2:8080/' + document.getElementById('generate_wordcloud_box').value)
         .then(res => res.json())
         .then((data) => _.map(data, (value, key) => ({"text": key, "value": value})))
         .then((data) => {

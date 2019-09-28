@@ -24,10 +24,10 @@ public class DemoApplication {
 	public Twitter twitter() throws TwitterException {
 		ConfigurationBuilder cb = new ConfigurationBuilder();
 		cb.setDebugEnabled(true)
-				.setOAuthConsumerKey("Insert your consumer key here")
-				.setOAuthConsumerSecret("Insert your consumer secret here")
-				.setOAuthAccessToken("Insert your access token here")
-				.setOAuthAccessTokenSecret("Insert your access secret here");
+			.setOAuthConsumerKey("")
+			.setOAuthConsumerSecret("")
+			.setOAuthAccessToken("")
+			.setOAuthAccessTokenSecret("");
 		TwitterFactory tf = new TwitterFactory(cb.build());
 		return tf.getInstance();
 	}
