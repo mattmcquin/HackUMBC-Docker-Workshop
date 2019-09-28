@@ -21,13 +21,27 @@ The Docker Hub is a repository where you can find millions of docker images. Ima
 
 We can get a little more involved with our Docker-ing: Try running `docker run -it ubuntu`. Notice anything? It started a container running Ubuntu and sent you the bash shell! Ctrl + D will exit and terminate the container. 
 
-# A Few Basics Docker Commands
-1. `docker ps` will show you running containers (you probably don't have any)
-1. `docker images` will show you all images available locally (you probably have 2)
-1. `docker pull <image-name>` will download an image from the Docker Hub (or a configured repository) without trying to run it
-1. `docker run -it <image-name> <command>` will attempt to start a container with the given image name, in interactive mode. Use this for things like shells where you would like to mantain an open connection.
-1. `docker run -d <image-name>` will start the container in the background. The container will stay alive until it terminates itself or you specifically tell Docker to terminate it.
+# A Few Essential Docker Commands
+1. `docker ps`                             Shows your running containers.
+1. `docker images`                         Shows you all images available locally.
+1. `docker rmi <image-name>`               Removes an image.
+1. `docker pull <image-name>`              Downloads an image from the Docker Hub (or a configured repository) without trying to run it.
+1. `docker run -it <image-name> <command>` Starts a container with the given image name, in interactive mode. Use this for things like shells where you would like to mantain an open connection.
+1. `docker run -d <image-name>`            Starts a container in the background. The container will stay alive until it terminates itself or you specifically tell Docker to terminate it.
+1. `docker run -p <port> <image-name>`     Starts a container with the given port exposed.
+1. `docker exec  <image> <command>`        Executes a command on the container. E.g. `docker exec -it <image> bash` gives a bash shell.
+1. `docker start/stop/pause <containerId>` Starts/stops/pauses an existing container.
+1. `docker tag <image-name> <new-image>`   Re-tags the given image with a new name/tag. Old image still exists.
+1. `docker logs -f <containerId>`          Opens and follows (-f) the logs on the existing container.
+1. `docker inspect <someId>`               Displays basic info about Docker objects, given some ID. It could be a container ID, an image, a netowrk, etc. 
 
 # Dockerfiles
 We have started existing Docker images, but how do we make our own? The short answer: a Dockerfile. Dockerfiles are simple in concept, and don't necessarily have to be complicated (though many complicated applications have large Dockerfiles). An example Dockerfile can be seen HERE. Essentially, this file is a set of instructions Docker uses to package, setup, transfer files, and execute your application. There are a few main keywords to note:
-1. `
+1. `FROM <base-image>:<version>`    Specifies a base image to build on - millions exist on the Docker Hub.
+1. `WORKDIR <directory>`            Sets the working directory within the container - kind of like using "cd" or "dir".
+1. `RUN <command>`                  Runs a command in the container. Maybe you want to do an "apt-get install" for a particular package.
+1. `VOLUME <hostPath>:<dockerPath>` Creates a volume on the host to persist data, so when the container exits the data still exists!
+1. `COPY <hostPath> <dockerPath>`   Copies the file(s)/directory from the host into the container at the specified path.
+1. `CMD ["command", "arg1", ... ]`  The main command to kick off your container. E.g. `CMD ["npm", "start"]`.
+1. `EPOSE <port1> <port2> ...`      *Documents* ports to expose. This notifies a user to use the `-p <port>` flat when running the image.
+
