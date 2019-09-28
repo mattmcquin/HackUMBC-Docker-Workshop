@@ -1,0 +1,10 @@
+.App {
+  background-color: lightgray;
+  text-align: center;
+  margin: auto;
+}
+
+.Button {
+  height: 25px;
+  width: 150px;
+}
