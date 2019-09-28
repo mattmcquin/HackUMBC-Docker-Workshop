@@ -38,7 +38,7 @@ We can get a little more involved with our Docker-ing: Try running `docker run -
 # Dockerfiles
 We have started existing Docker images, but how do we make our own? The short answer: a Dockerfile. Dockerfiles are simple in concept, and don't necessarily have to be complicated (though many complicated applications have large Dockerfiles). An example Dockerfile can be seen HERE. Essentially, this file is a set of instructions Docker uses to package, setup, transfer files, and execute your application. There are a few main keywords to note:
 | Keyword/Options | Description |
-|-----------------|-------------|
+| --------------- | ----------- |
 | `FROM <base-image>:<version>` | Specifies a base image to build on - millions exist on the Docker Hub. |
 | `WORKDIR <directory>` | Sets the working directory within the container - kind of like using "cd" or "dir". |
 | `RUN <command>` | Runs a command in the container. Maybe you want to do an "apt-get install" for a particular package. |
