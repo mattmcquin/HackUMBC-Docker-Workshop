@@ -27,6 +27,7 @@ We can get a little more involved with our Docker-ing: Try running `docker run -
 | ------- | ----------- |
 | `docker ps` | Shows your running containers. |
 | `docker images` | Shows you all images available locally. |
+| `docker build <options> <pathWithDockerfile>` | Builds a Docker image from the given Dockerfile. |
 | `docker rmi <image-name>` | Removes an image. |
 | `docker pull <image-name>` | Downloads an image from the Docker Hub (or a configured repository) without trying to run it. |
 | `docker run -it <image-name> <command>` | Starts a container with the given image name, in interactive mode. Use this for things like shells where you would like to mantain an open connection. |
